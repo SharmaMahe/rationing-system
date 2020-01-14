@@ -1,0 +1,76 @@
+{{template "base/base.html" .}}
+
+{{define "head"}}
+  <title>Add Ration</title>
+{{end}}
+
+{{define "body"}}
+  <div class="row justify-content-md-center mt-2">
+    <div class="col-4">
+      {{.flash.error}}
+      <form action="/ration/save" method="post" class="form-horizontal">
+          <div class="form-group">
+            <label class="control-label">Packet Type: </label>
+            <select class="form-control" name="packet_type" id="packet_type" required="">
+              <option value="">Select Packet Type</option>
+              <option value="food">Food</option>
+              <option value="water">Water</option>
+            </select>
+          </div>
+          <div id="food-section" class="d-none">
+            <div class="form-group">
+              <label class="control-label">Packet Content : </label>
+              <input type="text" class="form-control" name="packet_content" id="packet_content">
+            </div>
+            <div class="form-group">
+              <label class="control-label">Calories : </label>
+              <input type="text" class="form-control" name="calories" id="calories">
+            </div>
+            <div class="form-group">
+              <label class="control-label">Expiry Date : </label>
+              <input type="date" class="form-control" name="expiry_date" id="expiry_date">
+            </div>
+          </div>
+          <div id="water-section" class="d-none">
+            <div class="form-group">
+              <label class="control-label">Quantity (ltr) : </label>
+              <input type="text" class="form-control  col-4" name="quantity" id="quantity">
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn btn-info float-right" onclick="window.history.back(-1)">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+      </form>
+    </div>
+  </div>
+{{end}}
+
+{{define "script"}}
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#packet_type").on("change",function(){
+      if($(this).val()!="") {
+        if($(this).val() == 'water'){
+          $("#food-section").addClass('d-none');
+          $("#water-section").removeClass('d-none');
+          $("#packet_content").attr("required",false)
+          $("#calories").attr("required",false)
+          $("#expiry_date").attr("required",false)
+          $("#quantity").attr("required",true)
+        }else{
+          $("#food-section").removeClass('d-none');
+          $("#water-section").addClass('d-none');
+          $("#packet_content").attr("required",true)
+          $("#calories").attr("required",true)
+          $("#expiry_date").attr("required",true)
+          $("#quantity").attr("required",false)
+        }
+      }else{
+        $("#food-section").addClass('d-none');
+        $("#water-section").addClass('d-none');
+      }
+    })
+  })
+</script>
+{{end}}

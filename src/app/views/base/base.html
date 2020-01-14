@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{{template "base/head.html" .}}
+		{{template "head" .}}
+		{{ block "css" . }}{{ end }}
+	</head>
+	<body>
+		<div class="container">
+			{{template "base/navbar.html" .}}
+			{{template "body" .}}
+		</div>
+		{{ block "script" . }}{{ end }}
+	</body>
+</html>

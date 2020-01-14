@@ -1,0 +1,38 @@
+{{template "base/base.html" .}}
+
+{{define "head"}}
+  <title>Rationing System</title>
+{{end}}
+
+{{define "body"}}
+    <h3 class="mt-2">Daily Schedule</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Schedule Date</th>
+          <th>Packet Id</th>
+          <th>Packet Type</th>
+          <th>Packet Content</th>
+          <th>Calories</th>
+          <th>Expiry Date</th>
+          <th>Quantity (ltr)</th>
+        </tr>
+      </thead>
+      <tbody>
+		  {{range $key,$item := .ration}}
+      	  	{{$i := 1}}   
+		  	{{range $skey,$subitem := $item}}
+			  <tr>
+			  	{{if eq $skey 0}}<td class="align-middle" rowspan="{{len $item }}">{{$key}}</td>{{end}}
+			  	<td>{{if eq $subitem.PacketType "food"}}F{{$subitem.Id}} {{else}} W{{$subitem.Id}} {{end}}</td>
+	            <td>{{$subitem.PacketType}}</td>
+	            <td>{{if ne $subitem.PacketContent ""}}{{$subitem.PacketContent}} {{else}} - {{end}}</td>
+	            <td>{{if ne $subitem.Calories 0}} {{$subitem.Calories}} {{else}} - {{end}}</td>
+	            <td>{{if ne ($subitem.ExpiryDate.Format "2006-01-02") "0001-01-01"}}{{$subitem.ExpiryDate.Format "2006-01-02"}} {{else}} - {{end}}</td>
+	            <td>{{if ne $subitem.Quantity 0}}{{$subitem.Quantity}}{{else}} - {{end}}</td>
+			 </tr>
+		  	{{end}}
+		  {{end}}
+      </tbody>
+    </table>
+{{end}}

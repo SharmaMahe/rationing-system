@@ -1,0 +1,49 @@
+{{template "base/base.html" .}}
+
+{{define "head"}}
+  <title>Ration</title>
+{{end}}
+
+{{define "body"}}
+  <div class="container ml-1">
+    <h3 class="mt-2">Inventory</h3>
+    <div class="mx-auto">
+      <div class="row">
+        <div class="col-10">
+          <p>Total Items : {{len .ration }}</p>
+        </div>
+        <div class="col-2">
+          <a href="/ration/add"><button type="button" class="btn btn-primary mb-2">Add Ration</button></a>
+        </div>
+      </div>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Packet Id</th>
+          <th>Packet Type</th>
+          <th>Packet Content</th>
+          <th>Calories</th>
+          <th>Expiry Date</th>
+          <th>Quantity (ltr)</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{range $key, $val := .ration}}
+          <tr>
+            <td>{{if eq $val.PacketType "food"}}F{{$val.Id}} {{else}} W{{$val.Id}} {{end}}</td>
+            <td>{{$val.PacketType}}</td>
+            <td>{{if ne $val.PacketContent ""}}{{$val.PacketContent}} {{else}} - {{end}}</td>
+            <td>{{if ne $val.Calories 0}} {{$val.Calories}} {{else}} - {{end}}</td>
+            <td>{{if ne ($val.ExpiryDate.Format "2006-01-02") "0001-01-01"}}{{$val.ExpiryDate.Format "2006-01-02"}} {{else}} - {{end}}</td>
+            <td>{{if ne $val.Quantity 0}}{{$val.Quantity}}{{else}} - {{end}}</td>
+            <td>
+              <a href='{{urlfor "RationController.Delete" ":id" $val.Id}}' onclick="return confirm('Are you sure? you want to delete this item')"><button type="button" class="btn btn-primary">Delete</button></a>
+            </td>
+          </tr>
+        {{end}}
+      </tbody>
+    </table>
+  </div>
+{{end}}
