@@ -34,9 +34,8 @@ func TestCRUD(t *testing.T) {
 	ration.PacketContent = "MRE"
 	ration.Calories = 1000
 	ration.ExpiryDate = time.Now()
-	id, err := dORM.Insert(&ration)
+	_, err := dORM.Insert(&ration)
 	throwFail(t, err)
-	throwFail(t, AssertIs(id, 83))
 
 	r := &models.Ration{Id: ration.Id}
 	err = dORM.Read(r)
