@@ -11,10 +11,10 @@ You can find more info here - https://docs.google.com/document/d/12iUPtQJdN5tspz
 ## Installation
 	Execute following commands :
 	1 Clone the repo and go to src/app
-    2 Run "go get github.com/astaxie/beego"
-	3 Run "go get github.com/go-sql-driver/mysql"
-	4 Run "go get github.com/beego/bee"
-    5 After that set the GOPATH,GOROOT and PATH variables 
+	2 Set the GOROOT,GOPATH and PATH variables 
+    3 Run "go get github.com/astaxie/beego"
+	4 Run "go get github.com/go-sql-driver/mysql"
+	5 Run "go get github.com/beego/bee"
     6 Configure the database credential in src/app/conf
     
 ## Usage
