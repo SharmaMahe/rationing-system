@@ -6,7 +6,7 @@ To survive, an average human needs 2500 calories and 2 liters of water per day. 
 You can find more info here - https://docs.google.com/document/d/12iUPtQJdN5tspzy2jSz8bqUytWMhcua3Cz38kGXq_Mo/edit?usp=sharing
 
 ## Prerequisites
-    'go' should be installed on your machine.
+    'go' should be installed on your machine. (min : 1.11)
 
 ## Installation
 	Execute following commands :
