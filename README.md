@@ -10,7 +10,7 @@ You can find more info here - https://docs.google.com/document/d/12iUPtQJdN5tspz
 
 ## Installation
 	Execute following commands :
-	1 Close the repo and go to src/app
+	1 Clone the repo and go to src/app
     2 Run "go get github.com/astaxie/beego"
 	3 Run "go get github.com/go-sql-driver/mysql"
 	4 Run "go get github.com/beego/bee"
