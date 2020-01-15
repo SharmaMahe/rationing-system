@@ -35,4 +35,7 @@
 		  {{end}}
       </tbody>
     </table>
+    {{if eq (len .ration) 0}}
+    <p class="text-center">Consider last surviving day or mission not started yet</p>
+    {{end}}
 {{end}}
