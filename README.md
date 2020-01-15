@@ -10,12 +10,13 @@ You can find more info here - https://docs.google.com/document/d/12iUPtQJdN5tspz
 
 ## Installation
 	Execute following commands :
-	1 Clone the repo and go to src/app
-	2 Set the GOROOT,GOPATH and PATH variables 
-    3 Run "go get github.com/astaxie/beego"
-	4 Run "go get github.com/go-sql-driver/mysql"
-	5 Run "go get github.com/beego/bee"
-    6 Configure the database credential in src/app/conf
+	1 git clone https://github.com/SharmaMahe/rationing-system
+	2 cd  src/app
+	3 Set the GOROOT,GOPATH and PATH variables 
+    4 Run "go get github.com/astaxie/beego"
+	5 Run "go get github.com/go-sql-driver/mysql"
+	6 Run "go get github.com/beego/bee"
+    7 Configure the database credential in src/app/conf
     
 ## Usage
 
